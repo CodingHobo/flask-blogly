@@ -20,4 +20,10 @@ app.config['SECRET_KEY'] = "SECRET!"
 debug = DebugToolbarExtension(app)
 
 @app.get("/")
-    def starting():
+def go_home():
+    return redirect('home.html')
+
+
+@app.get('/users')
+def show_users():
+    User.query.
