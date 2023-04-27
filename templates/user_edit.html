@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
-
+<!-- current_user -->
 {% block content %}
 <h1>Edit User Details</h1>
-<form action="">
-  <label for=""></label>
-
-  <label for=""></label>
-
-  <label for=""></label>
+<form action='/users/{{current_user.id}}/edit' method="post">
+  <label for="first_name">First Name
+    <input type="text" name="first_name" placeholder="{{current_user.first_name}}" /></label>
+  <label for="last_name">Last Name
+    <input type="text" name="last_name" placeholder="{{current_user.last_name}}" /> </label>
+  <label for="image_url">Image URL
+    <input type="text" name="image_url" placeholder="{{current_user.image_url}}" /> </label>
+  <button type="submit">Save</button>
 </form>
+<a href="/users"><button>Cancel</button></a>
 {%endblock%}

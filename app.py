@@ -6,6 +6,7 @@ from flask import Flask, request, redirect, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 # TODO: add classes to from models once created
 from models import db, connect_db, User
+from validation_funcs.py import check_info
 
 app = Flask(__name__)
 
@@ -53,10 +54,14 @@ def show_info(user_id):
 
 @app.get('/users/<int:user_id>/edit')
 def edit_user(user_id):
-    return render_template("user_edit.html")
+    current_user = User.query.get(user_id)
+    return render_template("user_edit.html", current_user=current_user)
 
 @app.post('/users/<int:user_id>/edit')
 def edit_and_redirect(user_id):
+    #retrieve form data, update user info in DB
+    info = request.form
+    info_checked = check_info(info)
     return redirect("/users")
 
 @app.post('/users/<int:user_id>/delete')
