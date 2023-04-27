@@ -68,9 +68,13 @@ def edit_user(user_id):
 def edit_and_redirect(user_id):
     # retrieve form data, update user info in DB
     info = request.form
-
     current_user = User.query.get(user_id)
 
+    current_user.first_name = info["first_name"]
+    current_user.last_name = info["last_name"]
+    current_user.image_url = info["image_url"]
+
+    db.session.commit()
     return redirect("/users")
 
 

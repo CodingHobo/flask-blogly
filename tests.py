@@ -60,3 +60,25 @@ class UserViewTestCase(TestCase):
             html = resp.get_data(as_text=True)
             self.assertIn("test1_first", html)
             self.assertIn("test1_last", html)
+
+    def test_route(self):
+        with self.client as c:
+            resp = c.get('/')
+            html = get_data(as_text=True)
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("<!-- eyooooo -->", html)
+
+            resp = c.get('/users/new')
+            html = get_data(as_text=True)
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("<h1>Create a User</h1>", html)
+
+            resp = c.post('/users/new')
+            html = get_data(as_text=True)
+            self.assertEqual(resp.status_code, 302)
+            self.assertIn("test1_first", html)
+
+            resp = c.post(f'/users/<int:{self.user_id}>/edit')
+            html = get_data(as_text=True)
+            self.assertEqual(resp.status_code, 302)
+            self.assertIn("<!-- eyooooo -->", html)
