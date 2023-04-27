@@ -3,7 +3,9 @@
 {% block content %}
 <h1>Users</h1>
 <ul>
-
+{% for user in all_users%}
+<a href="/users/{{user.id}}/edit"><li> {{user.first_name}} {{user.last_name}}</li></a>
+{% endfor %}
 </ul>
 <button href='/users/new'>Add user</button>
 {%endblock%}
