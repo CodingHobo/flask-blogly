@@ -78,12 +78,15 @@ class UserViewTestCase(TestCase):
                       'last_name':"test1_last",
                       'image_url':""},
                 follow_redirects=True)
-
             html = resp.get_data(as_text=True)
             self.assertEqual(resp.status_code, 200)
             self.assertIn("test1_first", html)
 
-            resp = c.post(f'/users/<int:{self.user_id}>/edit')
+            resp = c.post(f'/users/{self.user_id}/edit',
+                          follow_redirects=True,
+                          data={'first_name':"test1_first",
+                                'last_name':"test1_last",
+                                'image_url':""})
             html = resp.get_data(as_text=True)
             self.assertEqual(resp.status_code, 200)
             self.assertIn("<!-- eyooooo -->", html)
