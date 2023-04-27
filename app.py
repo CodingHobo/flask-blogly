@@ -48,8 +48,8 @@ def add_user():
 @app.get('/users/<int:user_id>')
 def show_info(user_id):
     #show info of given user <user-id>
-
-    return render_template("user_details.html")
+    user_info = User.query.get(user_id)
+    return render_template("user_details.html", user_info=user_info)
 
 @app.get('/users/<int:user_id>/edit')
 def edit_user(user_id):

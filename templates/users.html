@@ -4,8 +4,10 @@
 <h1>Users</h1>
 <ul>
 {% for user in all_users%}
-<a href="/users/{{user.id}}/edit"><li> {{user.first_name}} {{user.last_name}}</li></a>
+<a href="/users/{{user.id}}"><li> {{user.first_name}} {{user.last_name}}</li></a>
 {% endfor %}
 </ul>
-<button href='/users/new'>Add user</button>
+<a href='/users/new'>
+<button type="button">Add user</button>
+</a>
 {%endblock%}
