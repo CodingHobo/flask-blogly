@@ -6,7 +6,9 @@
 <a href="/users/{{user_info.id}}/edit">
 <button type="button">Edit</button>
 </a>
-<a href='/users/{{user_info.id}}/delete'>
-<button type="button">Delete</button></a>
+<form action="/users/{{user_info.id}}/delete" method="post">
+<button type="submit">Delete</button>
+</form>
+
 
 {%endblock%}

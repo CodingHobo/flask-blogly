@@ -1,4 +1,4 @@
 
 
-def check_info(info):
-    #checkeach property
+# def check_info(info):
+#     #checkeach property
