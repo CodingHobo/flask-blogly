@@ -44,7 +44,7 @@ def add_user():
     info = request.form
     new_user = User(first_name=info["first_name"],
                     last_name=info["last_name"],
-                    image_url=info["image_url"])
+                    image_url=info.get("image_url", None))
 
     db.session.add(new_user)
     db.session.commit()
