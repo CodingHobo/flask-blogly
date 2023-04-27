@@ -30,7 +30,7 @@ def show_users():
     return render_template("users.html")
 
 @app.get('/users/new')
-def user_form():
+def user_btn():
     return render_template("new_user_form.html")
 
 @app.post('/users/new')
