@@ -5,7 +5,7 @@ db = SQLAlchemy()  # create a SQLAlchemy instance
 # create a function that ties your db object to your app object
 # thus, allows your flask app to connect to the specified db
 
-DEFAULT_IMAGE_URL = "https://pbs.twimg.com/profile_images/971055567035883520/8uCAWl8v_400x400.jpg"
+DEFAULT_IMAGE_URL = "https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80"
 
 
 def connect_db(app):
@@ -37,5 +37,6 @@ class User(db.Model):
 
     image_url = db.Column(
         db.Text,
-        default=DEFAULT_IMAGE_URL
+        default=DEFAULT_IMAGE_URL,
+        nullable=False
     )
